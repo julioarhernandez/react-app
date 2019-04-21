@@ -26,8 +26,13 @@ class ShowVenue extends Component {
 
   getVenues = function (){
     console.log('go and find the location at the network api', this.props.latitude, this.props.longitude);
-    axios.get(`${baseUrl}/api/cards/getlinks/${this.props.latitude}/${this.props.longitude}`)
-          .then(res => {
+    axios.get(`${baseUrl}/api/cards/getlinks/${this.props.latitude}/${this.props.longitude}`,
+      {
+        crossDomain: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then(res => {
             this.setState((prevState, props) => {
               if (prevState.link !== res.data )
                 return {link: res.data};
