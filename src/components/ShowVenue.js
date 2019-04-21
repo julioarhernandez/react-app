@@ -30,7 +30,9 @@ class ShowVenue extends Component {
       {
         crossDomain: true,
         headers: {
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         }
       }).then(res => {
             this.setState((prevState, props) => {
