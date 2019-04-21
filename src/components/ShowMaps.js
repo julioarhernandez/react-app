@@ -69,8 +69,7 @@ class ShowMaps extends Component {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
-      })
-        .then(res => {
+      }).then(res => {
             res.data.map( (item) => {
                 markersList.push({'slug': item.veSlug, 'lat' : item.vePointLocation.coordinates[1], 'lng' : item.vePointLocation.coordinates[0]});
             });

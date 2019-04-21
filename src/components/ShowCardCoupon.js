@@ -36,8 +36,13 @@ class ShowCard extends Component {
   }
   
   componentDidMount() {
-    axios.get(`${baseUrl}/api/cards/getcard/${this.props.match.params.id}`)
-      .then(res => {
+    axios.get(`${baseUrl}/api/cards/getcard/${this.props.match.params.id}`,
+    {
+      crossDomain: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then(res => {
         this.setState({ 
           cards: res.data,
           shareUrl: `https://dealby.us/showcardcoupon/${res.data[0]["cards"]["_id"]}`,
