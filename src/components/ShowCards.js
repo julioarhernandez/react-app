@@ -16,7 +16,13 @@ class ShowCards extends Component {
   }
 
   componentDidMount() {
-    axios.get( `${baseUrl}/api/cards/venues/${this.props.match.params.id}`)
+    axios.get( `${baseUrl}/api/cards/venues/${this.props.match.params.id}`,
+    {
+      crossDomain: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
       .then(res => {
         this.setState({ cards: res.data });
         //console.log(this.state.cards);
