@@ -62,7 +62,14 @@ class ShowMaps extends Component {
     fetchPlaces(mapProps, map) {
     // Give the call to api to receive the markers
     let markersList = [];
-    axios.post( `${baseUrl}/api/cards/map/`)
+    axios.post( `${baseUrl}/api/cards/map/`,{
+        crossDomain: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
         .then(res => {
             res.data.map( (item) => {
                 markersList.push({'slug': item.veSlug, 'lat' : item.vePointLocation.coordinates[1], 'lng' : item.vePointLocation.coordinates[0]});
